@@ -1,24 +1,24 @@
 import styled from "styled-components";
 
 export const MainWrapper = styled.div`
-    width: 100%;
+    width: 65%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 120px;
-    padding-left: 10%;
     padding-top: 20px;
+    margin-bottom: 50px;
 `
 
 export const LogoWrapper = styled.div`
-    width: 80%;
+    width: 100%;
     display: flex;
     align-items: flex-start;
     margin-top: 20px;
 `
 
 export const BarAndButtonWrapper = styled.form`
-    width: 80%;
+    width: 100%;
     display: flex;
     border: solid 2px #3F9593;
     border-radius: 5px;
