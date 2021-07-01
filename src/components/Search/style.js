@@ -15,6 +15,7 @@ export const LogoWrapper = styled.div`
     display: flex;
     align-items: flex-start;
     margin-top: 20px;
+    cursor: pointer;
 `
 
 export const BarAndButtonWrapper = styled.form`

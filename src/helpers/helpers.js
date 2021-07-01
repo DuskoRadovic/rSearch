@@ -5,3 +5,5 @@ export const formatDate = (date) => {
 }
 
 export const showPrice = price => price ? `${price} CHF` : null
+
+export const baseUrl = 'https://www.ricardo.ch/api/frontend/recruitment'

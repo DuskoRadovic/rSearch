@@ -1,17 +1,15 @@
-import { combineReducers } from "redux";
-
 const initalState = {
-    allItems: {}
+    results: {},
+    details: {},
+    name: ''
 }
 
-const itemsReducer = (state = initalState, action) => {
-    if (action.type === 'GET_ALL_ITEMS') {
-        return {...state, allItems: action.payload}
-    } else {
+export const itemsReducer = (state = initalState, action) => {
+    if (action.type === 'GET_ITEMS') {
+        return {...state, results: action.payload}
+    } else if (action.type === 'GET_DETAILS') {
+        return {...state, details: action.payload}
+    }else {
         return state
     }
 }
-
-export const rootReducer = combineReducers({
-    itemsReducer
-});
