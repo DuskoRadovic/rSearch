@@ -23,14 +23,23 @@ export const Results = styled.div`
     margin-top: 20px;
     width: 100%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
+    align-items: center;
+`
+
+export const Count = styled.p`
+    color: grey;
+`
+
+export const Sort = styled.div`
+    width: 300px;
 `
 
 export const ItemsContainer = styled.div`
     width: 65%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-space-between;
+    justify-content: space-evenly;
     gap: 20px;
     border-top: solid lightgray 2px;
 `

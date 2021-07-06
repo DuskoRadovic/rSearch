@@ -1,35 +1,48 @@
-import { baseUrl } from '../../helpers/helpers'
+import { baseUrl, sortItems, key } from '../../helpers/helpers'
 
-export const getProducts = (term) => {
+export const getProducts = (sort, show, term) => {
     return async (dispatch) => {
+        dispatch({type: 'LOADING'})
         const text = term ? term : ' '
-        const key = '123456'
-        const response = await fetch(`${baseUrl}/search/?searchText=${text}&apiToken=${key}`)
-        const data = await response.json()
-        const action = {
-            type: 'GET_ITEMS',
-            payload: data
+        try {
+            const response = await fetch(`${baseUrl}/search/?searchText=${text}&apiToken=${key}`)
+            const data = await response.json()
+            const filteredItems = data.articles.filter(article => article.buyNowPrice)
+            data.articles = show ? filteredItems : data.articles        
+            sortItems(sort.value, data.articles)
+            data.term = text
+            data.loading = false
+            const action = {
+                type: 'GET_ITEMS',
+                payload: data
+            }
+            dispatch(action)
+        } catch(error) {
+            dispatch({type: 'ERROR', payload: `${error}`})
         }
-        dispatch(action)
     }
     
 }
 
 export const getProductDetails = (id) => {
     return async (dispatch) => {
-        const key = '123456'
-        const response = await fetch(`${baseUrl}/article-details/?articleId=${id}&apiToken=${key}`)
-        const data = await response.json()
-        const response2 = await fetch(`${baseUrl}/user/?userId=${data.sellerId}&apiToken=${key}`)
-        const seller = await response2.json()
-        const name = seller.name
-        data.name = name
-        console.log('FROM ACTION',data)
-        const action = {
-            type: 'GET_DETAILS',
-            payload: data
+        dispatch({type: 'LOADING'})
+        try {
+            const response = await fetch(`${baseUrl}/article-details/?articleId=${id}&apiToken=${key}`)
+            const data = await response.json()
+            const response2 = await fetch(`${baseUrl}/user/?userId=${data.sellerId}&apiToken=${key}`)
+            const seller = await response2.json()
+            const name = seller.name
+            data.name = name
+            data.loading = false
+            const action = {
+                type: 'GET_DETAILS',
+                payload: data
+            }
+            dispatch(action)
+        }catch(error){
+            dispatch({type: 'ERROR', payload: `${error}`})
         }
-        dispatch(action)
     }
 }
 
