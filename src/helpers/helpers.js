@@ -11,26 +11,22 @@ export const key = 'VALID_API_KEY_HERE'
 export const baseUrl = 'https://www.ricardo.ch/api/frontend/recruitment'
 
 export const showMinutes = (date) => {
-    let color = 'black'
     const diff = Date.parse(date) - Date.now()
     const minutes = Math.ceil(diff/60000)
     if(minutes < 60 && minutes > 0){
-        color = 'darkorange'
         return {
             min: `(${minutes} min left)`,
-            color: color
+            color: 'darkorange'
         }
     } else if(minutes <= 0) {
-        color = 'red'
         return {
             min: '(Auction ended)',
-            color: color
+            color: 'red'
         }
     }else {
-        color = 'green'
         return {
             min: '(More than 1hr left)',
-            color: color
+            color: 'green'
         }
     }
 }
