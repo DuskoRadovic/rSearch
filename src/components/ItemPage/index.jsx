@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { useHistory } from 'react-router-dom';
 import { getProductDetails } from '../../store/actions/actions';
-import { SpinnerCircular } from 'spinners-react';
+import Spin from '../spin';
 import { RootContainer } from '../../globalStyle/globalStyles';
 import Search from '../Search/index';
 import { OutsideWrapper,
@@ -43,12 +43,7 @@ const ItemPage = () => {
             <Search />
             {loading
             ?
-            <SpinnerCircular size={100} 
-                             thickness={180}
-                             speed={100}
-                             color="#48AAAA"
-                             secondaryColor="transparent"
-                             style={{marginTop: '150px'}}/>
+            <Spin />
             :
             <>
             <BackToResults onClick={() => history.goBack()}>Back to search results</BackToResults>

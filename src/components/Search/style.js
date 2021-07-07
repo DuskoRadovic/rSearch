@@ -20,13 +20,12 @@ export const LogoWrapper = styled.div`
 
 export const BarAndButtonWrapper = styled.form`
     width: 100%;
+    height: 45px;
     display: flex;
+    align-items: center;
     border: solid 2px #3F9593;
     border-radius: 5px;
     transition-duration: .5s;
-    :hover button {
-        background-color: #48AAAA;
-    }
     :hover {
         border-color: #48AAAA;
         box-shadow: rgba(72, 170, 170, 0.4) 2px 2px 2px 0px;
@@ -55,11 +54,12 @@ export const SearchBar = styled.input`
 export const SearchButton = styled.button`
     width: 20%;
     height: 45px;
-    background-color: #3F9593;
-    padding: 0;
+    background-color: ${props => props.searchText ? '#3F9593' : 'lightgrey'};
     border: none;
+    border-radius: 0 3px 3px 0;
+    padding: 0;
     transition-duration: .5s;
     :hover {
-        background-color: #48AAAA;
+        background-color: ${props => props.searchText ? '#48AAAA' : 'lightgrey'};
     }
 `

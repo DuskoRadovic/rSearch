@@ -3,7 +3,7 @@ import Search from '../Search/index';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getProducts } from '../../store/actions/actions';
-import { SpinnerCircular } from 'spinners-react';
+import Spin from '../spin';
 import Items from '../Items/index';
 import { RootContainer } from '../../globalStyle/globalStyles';
 
@@ -32,12 +32,7 @@ const ResultsPage = () => {
                 <Search />
                 {loading
                 ?
-                <SpinnerCircular size={100} 
-                                    thickness={180}
-                                    speed={100}
-                                    color="#48AAAA"
-                                    secondaryColor="transparent"
-                                    style={{marginTop: '150px'}}/>
+                <Spin />
                 :
                 <Items show={show}
                        setShow={setShow}
